@@ -1,0 +1,24 @@
+<div>
+      <div>
+        <label>Product ID </label>
+        {{input type="text" value=productId}}
+      </div>
+      <div>
+        <label>Keyword</label>
+        {{input type="text" value=keyword}}
+      </div>
+      <button {{action 'search'}}>Search</button>
+    <ul>
+        {{#if isError}}
+          <p> Sorry product don't find or API fails</p>
+        {{else}}
+            {{#each  searchResult as |review|}}
+              <li>{{review.name}} - {{review.reviewText}}</li>
+            {{/each}}
+        {{/if}}
+    </ul>
+
+    {{#if isEmpty}}
+        <li>Nothing was found</li>
+    {{/if}}
+</div>
